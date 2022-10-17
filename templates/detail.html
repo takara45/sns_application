@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+  <h3>Detail Page</h3>
+</div>
+{% endblock header %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+  <div class="alert alert-success" role="alert">
+    <p>Tile : {{object.title}}</p>
+    <p>Poster : {{object.author}}</p>
+    <p><img src="{{ object.snsimage.url }}" width=300 ></p>
+    <a href="{% url 'good' object.pk %}" class="btn btn-primary" role="button" aria-pressed="true">Good</a>
+    <a href="{% url 'read' object.pk %}" class="btn btn-secondary" role="button" aria-pressed="true">Read</a>
+  </div>
+</div>
+{% else %}
+Please login
+{% endif %}
+{% endblock content %}
